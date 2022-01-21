@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       REPO : misato
-      VLNV : misato
+      vlnv : misato
     steps:
       - name: Checkout Misato
         uses: actions/checkout@v2
@@ -17,7 +17,14 @@ jobs:
           pip3 install amaranth-yosys
           pip3 install git+git://github.com/amaranth-lang/amaranth-boards.git
           pip3 install git+git://github.com/amaranth-lang/amaranth-soc.git
-          pip3 install fusesoc
-      - run: echo "EDALIZE_LAUNCHER=el_docker" >> $GITHUB_ENV
-      - run: fusesoc library add $REPO $GITHUB_WORKSPACE/$REPO
-      - run: fusesoc run --target=sky130 $VLNV
+      - name: Build with Openlane
+        uses: librecores/ci-fusesoc-action@migrate-dockerized
+        with:
+          core: misato
+          target: sky130
+          tool: openlane
+      - name: Store artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: misato.gds
+          path: /home/runner/work/serv/serv/build/misato_0/sky130-openlane/gds/misato_synth_wrapper.gds
