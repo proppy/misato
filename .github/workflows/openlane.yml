@@ -27,4 +27,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: misato.gds
-          path: /home/runner/work/serv/serv/build/misato_0/sky130-openlane/gds/misato_synth_wrapper.gds
+          path: /home/runner/work/misato/misato/build/misato_0/sky130-openlane/gds/misato_synth_wrapper.gds
