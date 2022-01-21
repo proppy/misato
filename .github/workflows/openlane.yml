@@ -18,7 +18,7 @@ jobs:
           pip3 install git+git://github.com/amaranth-lang/amaranth-boards.git
           pip3 install git+git://github.com/amaranth-lang/amaranth-soc.git
       - name: Build with Openlane
-        uses: librecores/ci-fusesoc-action@migrate-dockerized
+        uses: proppy/ci-fusesoc-action@composite
         with:
           core: misato
           target: sky130
