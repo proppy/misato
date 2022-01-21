@@ -11,7 +11,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           path: misato
-      - name: Install Amaranth and FuseSoC
+      - name: Install Amaranth
         run: |
           pip3 install amaranth
           pip3 install amaranth-yosys
